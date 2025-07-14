@@ -1,0 +1,4 @@
+alt + shift + down arrow --- copies the line down
+ctrl + d --- highlights the next instance of what you have selected already
+"lorem*n" --- generates n paragraphs of lorem ipsum text
+"br*n" --- adds n number of line breaks

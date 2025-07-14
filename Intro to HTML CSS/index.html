@@ -1,0 +1,194 @@
+<!DOCTYPE html> <!-- should have this declaration in every html file at the very top -->
+<html lang="en"> <!-- https://validator.w3.org/ for markup validation service, upload file to check for errors! -->
+
+<head> <!-- the head section contains metadata about the page (not seen on the webpage) -->
+    <meta charset="UTF-8">
+    <meta name="author" content="Rachael"> <!-- meta tags are used in search engines to help people find stuff -->
+    <meta name="description" content="This page contains the basic intro to HTML/CSS work from freeCodeCamp.">
+
+    <title>Home</title>
+    <link rel="icon" href="img/profile-pic.jpg" type="image/x-icon"> <!-- adding a favicon (shows up on the tab); this href is a RELATIVE reference -->
+
+    <!-- me trying to use a google font, make sure to put the font before the stylesheet so it can be referenced -->
+    <!-- but if you want to use the font in multiple classes/pages, then put it in the main.css -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"> -->
+
+    <link rel="stylesheet" href="main.css" type="text/css"> <!-- technically don't need to put the type because stylesheets can only be text/css -->
+        <!-- rel = relate/relation (how does this relate to the web page); href = hypertext reference -->
+        <!-- this is where you could link to css files or js files or resources pulled in from the web -->
+
+    <style>
+        /* body {
+            background-color: rgb(42, 44, 54);
+            color:rgb(234, 237, 240);
+        } */
+    </style> <!-- where you can put css code, or you can put it in a specific css file and link it above -->
+</head>
+
+<body>
+    <h1>Heading 1: Page Title</h1> <!-- only put 1 h1 section per page (largest heading) -->
+
+    <hr>
+
+    <nav> <!-- navigation; a semantic element (doesn't actually do anything, but it defines the purpose of the enclosed content, allowing browsers/search engines to better interpret content) -->
+        <h3>Navigation</h3>
+        <ul>
+            <li>
+                <a href="#paragraphs">Paragraphs & Inline Elements</a> <!-- use # for INTERNAL references -->
+            </li>
+            <li>
+                <a href="#lists">Types of Lists</a>
+            </li>
+            <li>
+                <a href="#anchors">Links/Anchors</a>
+            </li>
+            <li>
+                <a href="#images">Images & Figures</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <hr> <!-- horizontal rule/line -->
+
+    <section id="parargaphs"> <!-- defines different sections of the page -->
+        <h2>Heading 2: Subtitle/Section Heading</h2>
+        <p>Paragraph section of the page :D</p>
+
+        <br> <!-- line break -->
+
+        <h3>Heading 3: Section Subheading</h3>
+        <p>
+            Baby paragraph---<em>emphasized topic</em>
+                <!-- em is an inline element (doesn't create a new line) that emphasizes! it defaults to italics, but you can change it in styling -->
+            <br>
+            Another baby paragraph---<strong>important topic!</strong>
+                <!-- strong is another inline element that increases font size and bolds the phrase -->
+            <br>
+            &nbsp;&nbsp;&nbsp;Third baby paragraph, but indented
+                <!-- &nbsp is an html entity for a tab; most html entities start with &; html entities are typically special symbols -->
+            <br>
+            Fourth baby paragraph that has an <abbr title="Abbreviation">abbr</abbr>
+                <!-- when user hovers over abbr, the title pops up; not available to assistive technology -->
+        </p>
+
+        <br>
+
+        <p>Here's an address:</p>
+        <address>
+            350328 Georgia Tech Station <br>
+            Atlanta, Georgia 30332
+        </address> <!--italicizes the address; now assistive technology and browser will know that this is an address-->
+    </section>
+    
+    <br>
+
+    <section id="lists">
+        <h3>Types of Lists:</h3>
+
+        <p>You can have an ordered list:</p>
+        <ol> <!-- ordered list -->
+            <li>The first thing.</li> <!-- list item -->
+            <li>The second thing.</li> <!-- list items have less space between them than paragraphs do-->
+            <li>The third thing.</li>
+        </ol>
+
+        <p>Or an unordered &lpar;and spaced out&rpar; list:</p>
+        <ul> <!-- unodered list -->
+            <li> <!-- can nest stuff within list items -->
+                <p>Bullet point no. 1.</p> <!-- putting paragraphs within a list makes it so there's more space between items -->
+            </li>
+            <li>
+                <p>
+                    Bullet point no. 2
+                    <br>with some <em>extra</em> stuff on the same bullet point.
+                </p>
+                <p>And another paragraph in the bullet point, how scandalous.</p>
+            </li>
+        </ul>
+
+        <p>Oh boy another list, this time it's a description list:</p>
+        <dl> <!-- description list; can have 2 different elements -->
+            <dt>A fun term.</dt> <!-- description term -->
+            <dd>Details about said term.</dd> <!-- description detail; indented -->
+
+            <dt>Another fun term.</dt>
+            <dd>Details about this other fun term.</dd>
+
+            <dt>A less fun term.</dt>
+            <dd>Details about this less fun term.</dd>
+        </dl>
+    </section>
+
+    <br>
+
+    <section id="anchors">
+        <h3>Links/Anchors:</h3>
+
+        <p>Woah it's a <a href="https://www.youtube.com/watch?v=IxX_QHay02M">visited link</a>!</p> <!-- a = anchor (hyperlink) -->
+        <p>Woah it's an <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">unvisited link</a>!</p> <!-- these two hrefs are ABSOLUTE references (full/specific addresses) -->
+        <p>Woah it's a <a href="https://www.youtube.com" target="_blank">link that opens in a new tab</a>!</p> <!-- setting target="_blank" opens the link in a new tab -->
+        <p>Woah it's a <a href="#lists">link to another section of the page</a>!</p> <!-- INTERNAL reference -->
+        <p>Woah it's a <a href="about.html">link to another page</a>!</p>
+        <p>Woah it's a <a href="img/polite-cat-meme.png">download link</a>!</p>
+        <p>Woah it's a <a href="mailto:rachaelsetia@gmail.com">mailto link</a>!</p>
+        <p>Woah it's a <a href="tel:+19842427481">phone number (Ian's)</a>!</p>
+    </section>
+
+    <br>
+
+    <section id="images">
+        <h3>Images & Figures:</h3> <!-- for actual publicly accessible things, make sure to use licensed images! use Unplash, Pexels, Gratisography, Pixabay, etc. -->
+            <!-- to compress img files, use tinypng.com -->
+
+        <div class="row"> <!-- these divs are me trying to get the imgs side by side -->
+            <div class="column">
+                <img src="img/crying-cat-meme.webp" alt="Crying Cat Meme" title="Goofy Goober #1" width="200">
+                    <!-- alt = alt text; for assistive technology and is also seen if img doesn't load -->
+                    <!-- title is seen when you hover over the img -->
+                    <!-- recommended to manually set the width/height so that popup ads and such cannot shift the location of the img while page loads in -->
+            </div>
+
+            <div class="column">
+                <figure> <!-- semantic tag, tells the browser that the img and caption are related; but also if you don't manually format the imgs, the figure tag will indent the img and caption -->
+                    <img src="img/el-gato.webp" alt="El Gato Meme" title="Goofy Goober #2" width="125" loading="lazy">
+                    <figcaption class="el-gato">Caption for the little man.</figcaption> <!-- idk if this is how class is meant to be used but i guessed and it worked?? in centering this caption but not the others-->
+                </figure>
+            </div>
+
+            <div class="column">
+                <img src="img/pop-cat-meme.png" alt="Pop Cat Meme" title="Goofy Goober #3" width="250" loading="lazy">
+                    <!-- loading mode is either "eager" or "lazy"; defaults to eager -->
+                    <!-- manually set to lazy if the image is not on the front page/you have to scroll to see it; decreases init bandwidth -->
+                    <!-- setting to lazy means that it will only load once you get closer to the image as you scroll -->
+            </div>
+        </div>
+
+        <br>
+
+        <figure>
+            <figcaption> Here's a figcaption for the code below: </figcaption> <!-- figcaptions must be either the first or last element within a figure element -->
+            <p>
+                <code> <!-- can insert code onto page, but you have to use html entities; ex. typing <h1></h1> will actually insert a header in there instead of showing <h1></h1> -->
+                    &lt;h1&gt;Header 1&lt;/h1&gt;
+                    <br>
+                    &lt;p&gt;This is kind of a pain to write out.&lt;/p&gt;
+                </code>
+            </p>
+        </figure>
+        
+    </section>
+
+    <hr>
+
+    <p>
+        &lt;&copy; 2025 <a href="about.html">Rachael Setia</a>&gt;
+    </p>
+
+    <p>
+        <a href="#">Back to Top</a> <!-- just a # returns to top -->
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+/* can import fonts in the html or in here; note that if you import more fonts, the longer they'll take to load */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap'); /* Quicksand font */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'); /* Ubuntu font */
+
+html {
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    /* setting up the default font */
+    font-family: "Quicksand", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+body {
+    font-size: 14pt;
+    padding: 5%;
+    background-color: rgb(42, 44, 54);
+    color: rgb(234, 237, 240);
+}
+
+h1 {
+    text-align: center;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 450;
+    font-style: normal;
+    font-size: 36pt;
+    margin: 3%;
+}
+
+h2 {
+    font-size: 22pt;
+}
+
+h3 {
+    font-size: 18pt;
+}
+
+h6 { /* my "subtitle" heading */
+    text-align: center;
+    font-size: 14pt;
+    font-weight: 200;
+    margin-top: 1%;
+}
+
+hr {
+    border-width: 1px; /* default is 1px */
+    border-color: rgb(153, 159, 186);
+}
+
+strong {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none; /* removes underline */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* need to fix link colors bc they're not visible in dark mode */
+a:link { /* a:link = unvisited link */
+    color:rgb(184, 201, 225)
+}
+a:visited { /* a:visited = visited link */
+    color:rgb(207, 186, 226)
+}
+
+img {
+    display: block; /* if I make it into a block the auto margins center the img idk why */
+    margin: auto;
+}
+
+.el-gato {
+    text-align: center;
+}
+
+/* this is me trying to make my imgs side by side */
+.row {
+    display: flex;
+    align-items: center;
+}
+.column {
+    flex: 33.333%; /* ngl idk what this value does it was in the example i pulled up for side by side imgs */
+    padding: 5px;
+}
