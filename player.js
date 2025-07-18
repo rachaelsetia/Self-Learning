@@ -73,15 +73,17 @@ export class Player { // must export this class so it can be used in a different
         // context.fillRect(this.x, this.y, this.width, this.height);
 
         // drawImage(img, sx, sy, swidth, sheight, x, y, width, height) where s-values are where you start clipping/cropping the img
-        context.drawImage(this.image, (this.frameX * this.width), (this.frameY * this.height), this.width, this.height, this.x, this.y, this.width, this.height) // a special HTML canvas method that you can use to draw (and even animate) an image
+        // a special HTML canvas method that you can use to draw (and even animate) an image
+        context.drawImage(this.image, (this.frameX * this.width), (this.frameY * this.height), this.width, this.height, this.x, this.y, this.width, this.height)
     }
 
     onGround(){
         return this.y >= this.game.height - this.height - this.game.groundMargin;
     }
 
-    setState(state){ // arg is a number that is the index of the state in the this.states array
+    setState(state, speedMod){ // state arg is a number that is the index of the state in the this.states array
         this.currentState = this.states[state];
+        this.game.speed = this.game.maxSpeed * speedMod;
         this.currentState.enter();
     }
 }

@@ -16,6 +16,6 @@
     max-height: 100%; /* same but with height */
 }
 
-#player {
-    display: none; /* because we want to draw it using js */
+#player, #layer1, #layer2, #layer3, #layer4, #layer5 {
+    display: none; /* because we want to draw these using js */
 }

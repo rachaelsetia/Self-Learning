@@ -25,7 +25,7 @@ export class Sitting extends State {
 
     handleInput(input){ // will run 60 times a second waiting for keys to be pressed to switch the player into a diff state
         if(input.includes("ArrowLeft") || input.includes("ArrowRight")){
-            this.player.setState(states.RUNNING);
+            this.player.setState(states.RUNNING, 1);
         }
     }
 }
@@ -44,9 +44,9 @@ export class Running extends State {
 
     handleInput(input){
         if(input.includes("ArrowDown")){
-            this.player.setState(states.SITTING);
+            this.player.setState(states.SITTING, 0);
         } else if(input.includes("ArrowUp")){
-            this.player.setState(states.JUMPING);
+            this.player.setState(states.JUMPING, 1);
         }
     }
 }
@@ -59,14 +59,14 @@ export class Jumping extends State {
 
     enter(){
         this.player.frameX = 0;
-        if(this.player.onGround()) this.player.vy -= 30;
+        if(this.player.onGround()) this.player.vy -= 20;
         this.player.maxFrame = 6;
         this.player.frameY = 1;
     }
 
     handleInput(input){
         if(this.player.vy > this.player.weight){ //checks if player has hit the peak of the jump
-            this.player.setState(states.FALLING);
+            this.player.setState(states.FALLING, 1);
         }
     }
 }
@@ -85,7 +85,7 @@ export class Falling extends State {
 
     handleInput(input){
         if(this.player.onGround()){
-            this.player.setState(states.RUNNING);
+            this.player.setState(states.RUNNING, 1);
         }
     }
 }

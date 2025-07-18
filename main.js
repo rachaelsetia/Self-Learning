@@ -1,5 +1,6 @@
 import { Player } from "./player.js";
 import { InputHandler } from "./input.js";
+import { Background } from "./background.js";
 
 // window.addEventListener(type, listener, options); allows us to execute the specified function whenever a particular event occurs on the browser window
 // the load event fires when the whole page has finished loading; we want to make sure that everything is loaded before we do anything with it
@@ -13,23 +14,28 @@ window.addEventListener('load', function(){
         // I wanted the game to cover the entire tab, but the problem with doing it this way is that it takes the dimensions of the window at the time you load the page
         // so if you splitscreen, the dimensions will be more like a square and the aspect ratio can be inconsistent
 
-    canvas.width = 1280;
-    canvas.height = 720;
+    canvas.width = 1000;
+    canvas.height = 500;
 
     class Game {
         constructor(width, height){ // constructors get auto executed when the class is called
             this.width = width;
             this.height = height;
-            this.groundMargin = 0;
+            this.groundMargin = 83;
+            this.speed = 0; // in pixels per frame; set to 0 bc player sits at beginning of game
+            this.maxSpeed = 3;
+            this.background = new Background(this);
             this.player = new Player(this); // Player class takes the Game Object as an arg, so you can pass "this"
             this.input = new InputHandler();
         }
 
         update(deltaTime){
+            this.background.update();
             this.player.update(this.input.keys, deltaTime);
         }
 
         draw(context){
+            this.background.draw(context); // need to draw the background before the player!
             this.player.draw(context); // calls the draw function from player.js (not this one!)
         }
     }
