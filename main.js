@@ -1,6 +1,7 @@
 import { Player } from "./player.js";
 import { InputHandler } from "./input.js";
 import { Background } from "./background.js";
+import { FlyingEnemy, GroundEnemy, ClimbingEnemy } from "./enemies.js";
 
 // window.addEventListener(type, listener, options); allows us to execute the specified function whenever a particular event occurs on the browser window
 // the load event fires when the whole page has finished loading; we want to make sure that everything is loaded before we do anything with it
@@ -23,20 +24,50 @@ window.addEventListener('load', function(){
             this.height = height;
             this.groundMargin = 83;
             this.speed = 0; // in pixels per frame; set to 0 bc player sits at beginning of game
-            this.maxSpeed = 3;
+            this.maxSpeed = 4;
             this.background = new Background(this);
             this.player = new Player(this); // Player class takes the Game Object as an arg, so you can pass "this"
             this.input = new InputHandler();
+            this.enemies = []; // will hold all currently active enemy objects
+            this.enemyTimer = 0; // increases until it hits the "enemy interval," when the game will add a new enemy in and reset timer
+            this.enemyInterval = 1000; // will add a new enemy every 1000 milliseconds
         }
 
         update(deltaTime){
             this.background.update();
             this.player.update(this.input.keys, deltaTime);
+
+            // handling enemies
+            if(this.enemyTimer > this.enemyInterval){
+                this.addEnemy();
+                this.enemyTimer = 0;
+            } else {
+                this.enemyTimer += deltaTime
+            }
+            this.enemies.forEach(enemy => { // .forEach() method executes a provided function once for each array element
+                enemy.update(deltaTime);
+                if(enemy.markedForDeletion) this.enemies.splice(this.enemies.indexOf(enemy), 1);
+            });
         }
 
         draw(context){
             this.background.draw(context); // need to draw the background before the player!
             this.player.draw(context); // calls the draw function from player.js (not this one!)
+
+            // drawing enemies
+            this.enemies.forEach(enemy => {
+                enemy.draw(context);
+            });
+        }
+
+        addEnemy(){
+            this.enemies.push(new FlyingEnemy(this));
+            if(this.speed > 0 && Math.random() < 0.5){
+                this.enemies.push(new GroundEnemy(this));
+            } else if(this.speed > 0){
+                this.enemies.push(new ClimbingEnemy(this));
+            }
+            console.log(this.enemies);
         }
     }
 

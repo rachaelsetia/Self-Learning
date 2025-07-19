@@ -32,7 +32,7 @@ export class Sitting extends State {
 
 export class Running extends State {
     constructor(player){
-        super("RUNNING");
+        super("RUNNING"); // the super keyword is used to access and call functions on an object's parent
         this.player = player;
     }
 
