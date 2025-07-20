@@ -1,5 +1,6 @@
 export class InputHandler {
-    constructor(){
+    constructor(game){
+        this.game = game;
         this.keys = []; // keys pressed down will be added to the array, and keys released will be removed
 
         window.addEventListener("keydown", e => { // keydown event is fired when any key is pressed (even ones that don't produce characters)
@@ -17,9 +18,13 @@ export class InputHandler {
                     e.key === "Enter"
                 ) && this.keys.indexOf(e.key) === -1){ 
                 this.keys.push(e.key);
+            } else if(e.key === "d"){
+                this.game.debug = !this.game.debug; // adding a debug mode where we can see the hitboxes of all enemies and the player
+            }
+            else if(e.key === "s"){
+                this.game.stop = !this.game.stop;
             }
 
-            console.log(e.key, this.keys);
         });
 
         window.addEventListener("keyup", e => {
@@ -31,8 +36,6 @@ export class InputHandler {
                 // splice(startIndex, removeCount) where startIndex is the first index of the section you want to remove and removeCount is how many total you want to remove
                 this.keys.splice(this.keys.indexOf(e.key), 1);
             }
-
-            console.log(e.key, this.keys);
         });
     }
 }

@@ -1,4 +1,4 @@
-import { Sitting, Running, Jumping, Falling } from "./playerStates.js";
+import { Sitting, Running, Jumping, Falling, Rolling, Diving, Hit } from "./playerStates.js";
 
 export class Player { // must export this class so it can be used in a different module or file; each file can have unlimited amount of exports
     constructor(game){ // takes the entire game Object as an arg (from main.js)
@@ -27,16 +27,21 @@ export class Player { // must export this class so it can be used in a different
         this.states = [ new Sitting(this),
                         new Running(this),
                         new Jumping(this),
-                        new Falling(this)];
+                        new Falling(this),
+                        new Rolling(this),
+                        new Diving(this),
+                        new Hit(this)];
         this.currentState = this.states[0];
         this.currentState.enter(); // activates initial default state
     }
 
     update(input, deltaTime){
+        this.checkCollision();
         this.currentState.handleInput(input); // reminder that input is an array of keys being pressed
 
         // horizontal movement
         this.x += this.speed;
+
         // .includes() determines whether an array includes a certain value among its entries; returns true or false
         if(input.includes("ArrowRight")) this.speed = this.maxspeed;
         else if (input.includes("ArrowLeft")) this.speed = -this.maxspeed;
@@ -68,9 +73,8 @@ export class Player { // must export this class so it can be used in a different
     }
 
     draw(context){ // takes context as an arg so we know what canvas we want to draw on
-        // this was only used for demonstrating the basic draw function
-        // context.fillStyle = "red";
-        // context.fillRect(this.x, this.y, this.width, this.height);
+        // .strokeRect() is a method of the Canvas 2D API that draws a rectangle that is stroked/outlined; .fillRect() will draw a filled rectangle
+        if(this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height); // draws the player hitbox
 
         // drawImage(img, sx, sy, swidth, sheight, x, y, width, height) where s-values are where you start clipping/cropping the img
         // a special HTML canvas method that you can use to draw (and even animate) an image
@@ -85,5 +89,31 @@ export class Player { // must export this class so it can be used in a different
         this.currentState = this.states[state];
         this.game.speed = this.game.maxSpeed * speedMod;
         this.currentState.enter();
+    }
+
+    checkCollision(){
+        this.game.enemies.forEach(enemy => {
+            if(
+                // these might work, but it's a lot more complicated than what the tutorial tells me to do
+                // ((enemy.x < this.x + this.width && enemy.x > this.x) ||
+                // (enemy.x + enemy.width < this.x + this.width && enemy.x + enemy.width > this.x)) &&
+                // ((enemy.y < this.y + this.height && enemy.y > this.y) ||
+                // (enemy.y + enemy.height < this.y + this.height && enemy.y + enemy.height > this.y))
+
+                enemy.x < this.x + this.width &&
+                enemy.x + enemy.width > this.x &&
+                enemy.y < this.y + this.width &&
+                enemy.y + enemy.height > this.y
+            ){
+                // collision detected
+                console.log(this.currentState);
+                if(this.currentState.state == "ROLLING"){
+                    enemy.markedForDeletion = true;
+                    this.game.score++;
+                }
+            } else {
+                // no collision
+            }
+        });
     }
 }

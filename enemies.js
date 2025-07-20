@@ -25,6 +25,8 @@ class Enemy {
     }
 
     draw(context) {
+        if(this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height);
+        
         // sy is set to 0 because these enemies only have one line for their sprite sheet
         context.drawImage(this.image, (this.frameX * this.width), 0, this.width, this.height, this.x, this.y, this.width, this.height)
     }
@@ -50,6 +52,7 @@ export class FlyingEnemy extends Enemy {
         super.update(deltaTime);
         this.angle += this.va;
         this.y += Math.sin(this.angle * 0.5) * 2; // passing a slowly increasing angle to Math.sin() will map positions along sine wave
+            // I added multipliers to increase the amplitude and the wavelength of the path
     }
 
     draw(context){

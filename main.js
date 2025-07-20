@@ -2,6 +2,7 @@ import { Player } from "./player.js";
 import { InputHandler } from "./input.js";
 import { Background } from "./background.js";
 import { FlyingEnemy, GroundEnemy, ClimbingEnemy } from "./enemies.js";
+import { UI } from "./UI.js";
 
 // window.addEventListener(type, listener, options); allows us to execute the specified function whenever a particular event occurs on the browser window
 // the load event fires when the whole page has finished loading; we want to make sure that everything is loaded before we do anything with it
@@ -27,10 +28,15 @@ window.addEventListener('load', function(){
             this.maxSpeed = 4;
             this.background = new Background(this);
             this.player = new Player(this); // Player class takes the Game Object as an arg, so you can pass "this"
-            this.input = new InputHandler();
+            this.input = new InputHandler(this);
+            this.UI = new UI(this);
             this.enemies = []; // will hold all currently active enemy objects
             this.enemyTimer = 0; // increases until it hits the "enemy interval," when the game will add a new enemy in and reset timer
             this.enemyInterval = 1000; // will add a new enemy every 1000 milliseconds
+            this.debug = true;
+            this.stop = false;
+            this.score = 0;
+            this.fontColor = "black";
         }
 
         update(deltaTime){
@@ -53,6 +59,7 @@ window.addEventListener('load', function(){
         draw(context){
             this.background.draw(context); // need to draw the background before the player!
             this.player.draw(context); // calls the draw function from player.js (not this one!)
+            this.UI.draw(context);
 
             // drawing enemies
             this.enemies.forEach(enemy => {
@@ -82,7 +89,7 @@ window.addEventListener('load', function(){
         lastTime = timeStamp;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height); // clears the canvas each frame before drawing more things
-        game.update(deltaTime);
+        if(!game.stop) game.update(deltaTime);
         game.draw(ctx);
 
         requestAnimationFrame(animate); // requests the browser to call a user-supplied callback function (animate() in this case) before the next repaint
