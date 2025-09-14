@@ -1,5 +1,4 @@
-<<<<<<< HEAD
 # Self-Learning
-=======
-# JSGameDevBasics
->>>>>>> source_repo/main
+HTML/CSS
+Basic Game Dev with JS
+Unity
