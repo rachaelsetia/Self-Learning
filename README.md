@@ -1,4 +1,4 @@
 # Self-Learning
-HTML/CSS
-Basic Game Dev with JS
+HTML/CSS/n
+Basic Game Dev with JS/n
 Unity
