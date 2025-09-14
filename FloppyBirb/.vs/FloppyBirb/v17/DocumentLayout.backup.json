@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\racha\\Code\\FloppyBirb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{85E563FB-0510-DCBC-CB68-D8E73B346476}|Assembly-CSharp.csproj|c:\\users\\racha\\code\\floppybirb\\assets\\pipemovescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85E563FB-0510-DCBC-CB68-D8E73B346476}|Assembly-CSharp.csproj|solutionrelative:assets\\pipemovescript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85E563FB-0510-DCBC-CB68-D8E73B346476}|Assembly-CSharp.csproj|c:\\users\\racha\\code\\floppybirb\\assets\\birbscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85E563FB-0510-DCBC-CB68-D8E73B346476}|Assembly-CSharp.csproj|solutionrelative:assets\\birbscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BirbScript.cs",
+              "DocumentMoniker": "C:\\Users\\racha\\Code\\FloppyBirb\\Assets\\BirbScript.cs",
+              "RelativeDocumentMoniker": "Assets\\BirbScript.cs",
+              "ToolTip": "C:\\Users\\racha\\Code\\FloppyBirb\\Assets\\BirbScript.cs",
+              "RelativeToolTip": "Assets\\BirbScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-02T02:46:36.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PipeMoveScript.cs",
+              "DocumentMoniker": "C:\\Users\\racha\\Code\\FloppyBirb\\Assets\\PipeMoveScript.cs",
+              "RelativeDocumentMoniker": "Assets\\PipeMoveScript.cs",
+              "ToolTip": "C:\\Users\\racha\\Code\\FloppyBirb\\Assets\\PipeMoveScript.cs",
+              "RelativeToolTip": "Assets\\PipeMoveScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAACBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-02T02:44:18.974Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
