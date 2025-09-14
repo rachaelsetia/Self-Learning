@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'); /* Ubuntu font */
+
+* {
+    /* following 3 lines are a GLOBAL RESET so the page looks the same across different browsers */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* if you set box-sizing: border-box; on an element, padding and border are included in the width and height when you tamper with them later */
+        /* if you don't, then divs with the same set width and height might be different sizes due to padding and border */
+}
+
+#main-canvas {
+    border: 2px dotted rgb(98, 135, 174);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* makes it so that the canvas itself is centered and not just the top left corner is in the center */
+    max-width: 100%; /* will forcibly scale down the canvas size if I set the width to be bigger than the window */
+    max-height: 100%; /* same but with height */
+}
+
+#player, #layer1, #layer2, #layer3, #layer4, #layer5, #flying-enemy, #plant-enemy, #spider-enemy {
+    display: none; /* because we want to draw these using js */
+}
